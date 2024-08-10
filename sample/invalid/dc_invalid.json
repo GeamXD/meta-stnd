@@ -1,0 +1,15 @@
+{
+    "subject": "Metadata Example",
+    "publisher": "OpenAI",
+    "contributor": "Jane Smith",
+    "date": "2024-08-10",
+    "type": "Text",
+    "format": "text/xml",
+    "identifier": "https://www.example.com/sample-metadata",
+    "source": "Original Source",
+    "language": "en",
+    "relation": "IsPartOf Example Collection",
+    "coverage": "Global",
+    "rights": "Public Domain"
+  }
+  

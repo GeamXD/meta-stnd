@@ -1,0 +1,93 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "METS-like JSON Schema",
+    "description": "A custom JSON schema for a METS-like structure.",
+    "type": "object",
+    "properties": {
+      "metsHdr": {
+        "description": "Metadata about the METS document.",
+        "type": "object",
+        "properties": {
+          "ID": { "type": "string" },
+          "CREATEDATE": { "type": "string", "format": "date-time" },
+          "LASTMODDATE": { "type": "string", "format": "date-time" },
+          "RECORDSTATUS": { "type": "string" },
+          "title": { "type": "string", "description": "The title of the METS document." },
+          "description": { "type": "string", "description": "A description of the METS document." },
+          "author": { "type": "string", "description": "The author of the METS document." },
+          "publisher": { "type": "string", "description": "The publisher of the METS document." },
+          "language": { "type": "string", "description": "The language of the METS document." }
+        },
+        "required": ["ID", "CREATEDATE", "title", "description", "author", "publisher", "language"]
+      },
+      "fileSec": {
+        "description": "Contains file groups and files.",
+        "type": "object",
+        "properties": {
+          "fileGrp": {
+            "description": "A group of files.",
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "ID": { "type": "string" },
+                "USE": { "type": "string" },
+                "file": {
+                  "description": "A file within the group.",
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "ID": { "type": "string" },
+                      "MIMETYPE": { "type": "string" },
+                      "SIZE": { "type": "integer" },
+                      "CHECKSUM": { "type": "string" },
+                      "CHECKSUMTYPE": { "type": "string" },
+                      "xlink:href": { "type": "string", "format": "uri" },
+                      "title": { "type": "string", "description": "The title of the file." },
+                      "description": { "type": "string", "description": "A description of the file." }
+                    },
+                    "required": ["ID", "MIMETYPE", "xlink:href", "title", "description"]
+                  }
+                }
+              },
+              "required": ["ID", "USE"]
+            }
+          }
+        },
+        "required": ["fileGrp"]
+      },
+      "structMap": {
+        "description": "Defines the structure of the digital object.",
+        "type": "object",
+        "properties": {
+          "div": {
+            "description": "A structural division.",
+            "type": "object",
+            "properties": {
+              "TYPE": { "type": "string" },
+              "LABEL": { "type": "string" },
+              "DMDID": { "type": "string" },
+              "fptr": {
+                "description": "Pointer to a file.",
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "FILEID": { "type": "string" }
+                  },
+                  "required": ["FILEID"]
+                }
+              },
+              "title": { "type": "string", "description": "The title of the structural division." },
+              "description": { "type": "string", "description": "A description of the structural division." }
+            },
+            "required": ["TYPE", "title", "description"]
+          }
+        },
+        "required": ["div"]
+      }
+    },
+    "required": ["metsHdr", "fileSec", "structMap"]
+  }
+  

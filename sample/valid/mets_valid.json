@@ -1,0 +1,48 @@
+{
+    "metsHdr": {
+      "ID": "METS001",
+      "CREATEDATE": "2024-08-10T12:00:00Z",
+      "LASTMODDATE": "2024-08-10T12:00:00Z",
+      "RECORDSTATUS": "active",
+      "title": "Digital Archive Document",
+      "description": "A METS document containing digital archives.",
+      "author": "John Doe",
+      "publisher": "Digital Archives Ltd.",
+      "language": "en"
+    },
+    "fileSec": {
+      "fileGrp": [
+        {
+          "ID": "FG001",
+          "USE": "master",
+          "file": [
+            {
+              "ID": "FILE001",
+              "MIMETYPE": "image/jpeg",
+              "SIZE": 204800,
+              "CHECKSUM": "e99a18c428cb38d5f260853678922e03",
+              "CHECKSUMTYPE": "MD5",
+              "xlink:href": "http://example.com/file1.jpg",
+              "title": "Image of Historical Document",
+              "description": "A high-resolution image of a historical document."
+            }
+          ]
+        }
+      ]
+    },
+    "structMap": {
+      "div": {
+        "TYPE": "document",
+        "LABEL": "Document Structure",
+        "DMDID": "DMD001",
+        "fptr": [
+          {
+            "FILEID": "FILE001"
+          }
+        ],
+        "title": "Document Division",
+        "description": "This division represents the main document structure."
+      }
+    }
+  }
+  

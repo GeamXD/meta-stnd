@@ -1,0 +1,17 @@
+{
+    "title": "Metadata Example",
+    "creator": "John Doe",
+    "subject": "Metadata Example sub",
+    "description": "This is an example of a Dublin Core metadata record.",
+    "publisher": "OpenAI",
+    "contributor": "Jane Smith",
+    "date": "2024-08-10",
+    "type": "Text",
+    "format": "text/xml",
+    "identifier": "https://www.example.com/sample-metadata",
+    "source": "Original Source",
+    "language": "en",
+    "relation": "IsPartOf Example Collection",
+    "coverage": "Global",
+    "rights": "Public Domain"
+  }

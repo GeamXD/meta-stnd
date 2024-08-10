@@ -1,0 +1,34 @@
+{
+    "metsHdr": {
+      "ID": "METS002",
+      "CREATEDATE": "2024-08-10T12:00:00Z",
+      "title": "Digital Archive Document",
+      "description": "A METS document containing digital archives.",
+      "author": "Jane Doe"
+    },
+    "fileSec": {
+      "fileGrp": [
+        {
+          "ID": "FG002",
+          "USE": "master",
+          "file": [
+            {
+              "ID": "FILE002",
+              "MIMETYPE": "image/png",
+              "xlink:href": "http://example.com/file2.png",
+              "title": "PNG Image",
+              "description": "A PNG image file."
+            }
+          ]
+        }
+      ]
+    },
+    "structMap": {
+      "div": {
+        "TYPE": "document",
+        "title": "Document Division",
+        "description": "This division represents the main document structure."
+      }
+    }
+  }
+  
