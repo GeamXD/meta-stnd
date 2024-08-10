@@ -46,8 +46,11 @@ with st.sidebar:
             st.session_state['schema_mets'] = schema_mets
 
         # Validate mets data
-        mets_val = validate_json(data, schema_mets)
-        st.session_state['mets_val'] = mets_val
+        try:
+            mets_val = validate_json(data, schema_mets)
+            st.session_state['mets_val'] = mets_val
+        except NameError:
+            pass
 
     elif predefined_schema_dc:
 
@@ -57,8 +60,11 @@ with st.sidebar:
             st.session_state['schema_dc'] = schema_dc
     
         # Validate dv data
-        mets_val = validate_json(data, schema_dc)
-        st.session_state['mets_val'] = mets_val
+        try:
+            mets_val = validate_json(data, schema_dc)
+            st.session_state['mets_val'] = mets_val
+        except NameError:
+            pass
 
     # Button to validate metadata
     validate_btn = st.button("Validate Metadata")

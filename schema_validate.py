@@ -20,7 +20,7 @@ def format_validation_errors_st(error_message):
     
     # Check if there are validation errors
     if 'valid' in error_message:
-        return "JSON is valid according to the schema."
+        return "Metadata is valid according to the schema."
     
     # Initialize the formatted message with a title
     formatted_message = "**Errors found in Metadata:**\n\n"
