@@ -1,7 +1,7 @@
 import json
 import pandas as pd
 import streamlit as st
-from schema_validate import validate_json, format_validation_errors_st
+from schema_validate import validate_json, format_validation_errors_st, format_validation_errors_mt
 
 # Set up page title and description
 st.set_page_config(
@@ -116,7 +116,7 @@ try:
             st.json(sc)
 
             st.title('Validation Result')
-            st.markdown(st.session_state['mets_val'])
+            st.markdown(format_validation_errors_mt(st.session_state['mets_val']))
 
 except KeyError:
     pass

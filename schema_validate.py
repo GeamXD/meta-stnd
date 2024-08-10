@@ -2,10 +2,6 @@ import json
 from typing import List, Tuple
 from jsonschema import Draft7Validator, exceptions
 
-# def load_json_file(file_path: str) -> dict:
-#     """Load and return the content of a JSON file."""
-#     with open(file_path, 'r', encoding='utf-8') as f:
-#         return json.load(f)
 
 def format_error_message(errors: List[exceptions.ValidationError]) -> str:
     """Format the error messages from JSON validation."""
@@ -20,7 +16,7 @@ def format_validation_errors_st(error_message):
     
     # Check if there are validation errors
     if 'valid' in error_message:
-        return "Metadata is valid according to the schema."
+        return "Metadata is valid according to Dublin Core schema."
     
     # Initialize the formatted message with a title
     formatted_message = "**Errors found in Metadata:**\n\n"
@@ -32,6 +28,39 @@ def format_validation_errors_st(error_message):
     for error in errors[1:]:  # Skip thnote first item as it's the initial part of the string
         formatted_message += f"- **Validation failed at : {error.strip()}**\n"
     
+    return formatted_message
+
+def format_validation_errors_mt(error_message: str) -> str:
+    # Check if the message contains 'Validation failed'
+    if 'valid' in error_message:
+        return "Metadata is valid according to METS schema."
+
+    # Split the error message into lines
+    error_lines = error_message.split('Validation failed at')
+
+    # Initialize a dictionary to hold error details
+    error_dict = {}
+
+    for line in error_lines:
+        if line.strip():  # Ignore empty lines
+            # Split line into location and error details
+            location, details = line.split(':', 1)
+            location = location.strip()
+            details = details.strip()
+
+            # If the location is already in the dictionary, append the error
+            if location in error_dict:
+                error_dict[location].append(details)
+            else:
+                error_dict[location] = [details]
+
+    # Build a readable error message
+    formatted_message = "Errors found in Metadata:\n"
+    for location, errors in error_dict.items():
+        formatted_message += f"\n- At '{location}':\n"
+        for error in errors:
+            formatted_message += f"  * {error}\n"
+
     return formatted_message
 
 def validate_json(meta_data: dict, schema_data: dict) -> str:
